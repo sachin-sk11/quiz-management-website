@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const QuizHistory = require('../models/QuizHistory');
 
-// POST /history - save a quiz attempt (userId, score, totalQuestions)
 router.post('/', async (req, res) => {
   try {
     const { userId, score, totalQuestions } = req.body;
@@ -17,7 +16,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-// GET /history/:userId - get quiz history of user
 router.get('/:userId', async (req, res) => {
   try {
     const userId = req.params.userId;

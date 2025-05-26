@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 
-// POST /auth/register - for initial user creation (optional)
 router.post('/register', async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -21,7 +20,6 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// POST /auth/login
 router.post('/login', async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -33,7 +31,6 @@ router.post('/login', async (req, res) => {
     const valid = await user.validatePassword(password);
     if(!valid) return res.status(400).json({ error: 'Invalid username or password' });
 
-    // Return minimal user info, no token since no JWT
     res.json({ 
       message: 'Login successful',
       user: { id: user._id, username: user.username }

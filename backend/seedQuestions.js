@@ -118,11 +118,9 @@ async function seed() {
     });
     console.log('Connected to MongoDB');
 
-    // Clear existing questions (optional)
     await Question.deleteMany({});
     console.log('Cleared existing questions');
 
-    // Insert new questions
     await Question.insertMany(questions);
     console.log('Inserted questions');
 
